@@ -12,7 +12,7 @@ android {
         versionCode 111
         versionName "1.1.1"
         multiDexEnabled true
-        ndk{
+        ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86"
         }
         javaCompileOptions {
@@ -56,17 +56,22 @@ android {
 }
 
 //此处也可以写
-//repositories {
+repositories {
 //    jcenter()
 //    maven { url 'https://maven.fabric.io/public' }
 //    google()
-//}
+    flatDir {
+        dirs 'libs'
+    }
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:23.4.0'//implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation 'com.android.support:appcompat-v7:23.4.0'
+//implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     //testCompile 'junit:junit:4.12'
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"//implementation 'com.android.support:design:23.4.0'
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+//implementation 'com.android.support:design:23.4.0'
     implementation 'com.kymjs.rxvolley:rxvolley:1.0.1'
     implementation files('libs/volley.jar')
     implementation 'com.google.code.gson:gson:2.4'
@@ -99,9 +104,11 @@ dependencies {
     //fuli
     //compile 'io.realm:realm-android:0.87.0'
     implementation 'io.realm:realm-android:0.87.0'
-    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    //implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    //implementation 'com.astuetz.PagerSlidingTabStrip:1.0.1'//改包名-->找不到了,改为aar
+    //implementation files('pagerslidingtabstrip-1.0.1.aar')
+    implementation(name: 'pagerslidingtabstrip-1.0.1', ext: 'aar')
     implementation 'org.jsoup:jsoup:1.8.3'
-    implementation 'com.umeng.analytics:analytics:latest.integration'
     implementation files('libs/umeng-update-v2.6.0.1.jar')
     //流畅的图片动画效果
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
